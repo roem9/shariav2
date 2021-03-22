@@ -755,71 +755,70 @@
 
         return $hari . " " . $bulan . " " . $tahun;
     }
-
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <table border=1 style="border-collapse: collapse">
-        <thead>
-            <tr>
-                <th rowspan="2" style="padding: 10px">No</th>
-                <th rowspan="2" style="padding: 10px">Nama Lengkap</th>
-                <th rowspan="2" style="padding: 10px">TTL</th>
-                <th rowspan="2" style="padding: 10px">Alamat</th>
-                <th rowspan="2" style="padding: 10px">Alamat Pengiriman</th>
-                <th rowspan="2" style="padding: 10px">No Whatsapp</th>
-                <th rowspan="2" style="padding: 10px">Email</th>
-                <th colspan="2" style="padding: 10px">Nilai Istima</th>
-                <th colspan="2" style="padding: 10px">Nilai Tarakib</th>
-                <th colspan="2" style="padding: 10px">Nilai Qiroah</th>
-                <th rowspan="2" style="padding: 10px">SKOR TOAFL</th>
-                <th rowspan="2" style="padding: 10px">SKOR TOAFL</th>
-            </tr>
-            <tr>
-                <th style="padding: 10px">Jumlah Benar</th>
-                <th style="padding: 10px">Score</th>
-                <th style="padding: 10px">Jumlah Benar</th>
-                <th style="padding: 10px">Score</th>
-                <th style="padding: 10px">Jumlah Benar</th>
-                <th style="padding: 10px">Score</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php foreach ($respon as $i => $respon) :?>
-                <?php $skor = ((istima($respon['nilai_istima']) + tarakib($respon['nilai_tarakib']) + qiroah($respon['nilai_qiroah'])) * 10) / 3;?>
-                <tr>
-                    <td style="padding: 10px"><?= $i+1?></td>
-                    <td style="padding: 10px"><?= ucwords(strtolower($respon['nama']))?></td>
-                    <td style="padding: 10px"><?= ucwords(strtolower($respon['t4_lahir'])) . ", " . tgl_indo(date("d-m-Y", strtotime($respon['tgl_lahir'])))?></td>
-                    <td style="padding: 10px"><?= ucwords(strtolower($respon['alamat']))?></td>
-                    <td style="padding: 10px"><?= ucwords(strtolower($respon['alamat_pengiriman']))?></td>
-                    <td style="padding: 10px"><?= $respon['no_wa']?></td>
-                    <td style="padding: 10px"><?= $respon['email']?></td>
-                    
-                    <td style="padding: 10px"><center><?= $respon['nilai_istima']?></center></td>
-                    <td style="padding: 10px"><center><?= istima($respon['nilai_istima'])?></center></td>
-                    <td style="padding: 10px"><center><?= $respon['nilai_tarakib']?></center></td>
-                    <td style="padding: 10px"><center><?= tarakib($respon['nilai_tarakib'])?></center></td>
-                    <td style="padding: 10px"><center><?= $respon['nilai_qiroah']?></center></td>
-                    <td style="padding: 10px"><center><?= qiroah($respon['nilai_qiroah'])?></center></td>
-                    <td style="padding: 10px"><center><?= round($skor)?></center></td>
-                    <td style="padding: 10px"><center><?= $skor?></center></td>
+<?php $this->load->view("_partials/header");?>
 
-                    <!-- <td style="padding: 10px"><center><?= istima($respon['nilai_istima'])?>(<?= $respon['nilai_istima']?>/50 )</center></td>
-                    <td style="padding: 10px"><center><?= tarakib($respon['nilai_tarakib'])?>(<?= $respon['nilai_tarakib']?>/40)</center></td>
-                    <td style="padding: 10px"><center><?= qiroah($respon['nilai_qiroah'])?>(<?= $respon['nilai_qiroah']?>/50)</center></td>
-                    <td style="padding: 10px"><center><?= round($skor)?></center></td>
-                    <td style="padding: 10px"><center><?= $skor?></center></td> -->
+    <!-- Content Row -->
+    <div class="row" id="dataAjax">
+
+        <table border=1>
+            <thead>
+                <tr>
+                    <th rowspan="2" style="padding: 10px">No</th>
+                    <th rowspan="2" style="padding: 10px">Nama Lengkap</th>
+                    <th rowspan="2" style="padding: 10px">TTL</th>
+                    <th rowspan="2" style="padding: 10px">Alamat</th>
+                    <th rowspan="2" style="padding: 10px">Alamat Pengiriman</th>
+                    <th rowspan="2" style="padding: 10px">No Whatsapp</th>
+                    <th rowspan="2" style="padding: 10px">Email</th>
+                    <th colspan="2" style="padding: 10px">Nilai Istima</th>
+                    <th colspan="2" style="padding: 10px">Nilai Tarakib</th>
+                    <th colspan="2" style="padding: 10px">Nilai Qiroah</th>
+                    <th rowspan="2" style="padding: 10px">SKOR TOAFL</th>
+                    <th rowspan="2" style="padding: 10px">SKOR TOAFL</th>
                 </tr>
-            <?php endforeach;?>
-        </tbody>
-    </table>
-</body>
-</html>
+                <tr>
+                    <th style="padding: 10px">Jumlah Benar</th>
+                    <th style="padding: 10px">Score</th>
+                    <th style="padding: 10px">Jumlah Benar</th>
+                    <th style="padding: 10px">Score</th>
+                    <th style="padding: 10px">Jumlah Benar</th>
+                    <th style="padding: 10px">Score</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($respon as $i => $respon) :?>
+                    <?php $skor = ((istima($respon['nilai_istima']) + tarakib($respon['nilai_tarakib']) + qiroah($respon['nilai_qiroah'])) * 10) / 3;?>
+                    <tr>
+                        <td style="padding: 10px"><?= $i+1?></td>
+                        <td style="padding: 10px"><?= ucwords(strtolower($respon['nama']))?></td>
+                        <td style="padding: 10px"><?= ucwords(strtolower($respon['t4_lahir'])) . ", " . tgl_indo(date("d-m-Y", strtotime($respon['tgl_lahir'])))?></td>
+                        <td style="padding: 10px"><?= ucwords(strtolower($respon['alamat']))?></td>
+                        <td style="padding: 10px"><?= ucwords(strtolower($respon['alamat_pengiriman']))?></td>
+                        <td style="padding: 10px"><?= $respon['no_wa']?></td>
+                        <td style="padding: 10px"><?= $respon['email']?></td>
+                        
+                        <td style="padding: 10px"><center><?= $respon['nilai_istima']?></center></td>
+                        <td style="padding: 10px"><center><?= istima($respon['nilai_istima'])?></center></td>
+                        <td style="padding: 10px"><center><?= $respon['nilai_tarakib']?></center></td>
+                        <td style="padding: 10px"><center><?= tarakib($respon['nilai_tarakib'])?></center></td>
+                        <td style="padding: 10px"><center><?= $respon['nilai_qiroah']?></center></td>
+                        <td style="padding: 10px"><center><?= qiroah($respon['nilai_qiroah'])?></center></td>
+                        <td style="padding: 10px"><center><?= round($skor)?></center></td>
+                        <td style="padding: 10px"><center><?= $skor?></center></td>
+
+                        <!-- <td style="padding: 10px"><center><?= istima($respon['nilai_istima'])?>(<?= $respon['nilai_istima']?>/50 )</center></td>
+                        <td style="padding: 10px"><center><?= tarakib($respon['nilai_tarakib'])?>(<?= $respon['nilai_tarakib']?>/40)</center></td>
+                        <td style="padding: 10px"><center><?= qiroah($respon['nilai_qiroah'])?>(<?= $respon['nilai_qiroah']?>/50)</center></td>
+                        <td style="padding: 10px"><center><?= round($skor)?></center></td>
+                        <td style="padding: 10px"><center><?= $skor?></center></td> -->
+                    </tr>
+                <?php endforeach;?>
+            </tbody>
+        </table>
+
+    </div>
+
+<!-- $this->load->view("_partials/modal");?> -->
+<?php $this->load->view("_partials/footer");?>

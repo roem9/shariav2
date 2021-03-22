@@ -75,7 +75,7 @@ class Tes extends CI_Controller {
         foreach ($record as $i => $record) {
             $users_record[$i] = $record;
             $users_record[$i]['id_hasil'] = md5($record['id_tes']);
-            $users_record[$i]['link'] = 'https://toafl.id/soal/id/'.md5("MuhammadRum".$record['id_tes']);
+            $users_record[$i]['link'] = 'https://toafl.id/soal/id/'.md5($record['id_tes']);
             $users_record[$i]['tgl_tes'] = date("d-M-Y", strtotime($record['tgl_tes']));
             $users_record[$i]['peserta'] = COUNT($this->Main_model->get_all("peserta_toafl", ["id_tes" => $record['id_tes']]));
         }
