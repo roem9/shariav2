@@ -69,10 +69,16 @@ function createTable(data,sno){
     html = "";
 
     for(index in data){
+        if(data[index].status == "Selesai"){
+            color = `list-group-item-success`;
+        } else {
+            color = `list-group-item-warning`;
+        }
+
         html += `
         <div class="col-12 col-md-4">
             <div class="card shadow mb-4">
-                <div class="list-group-item-success card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                <div class="`+color+` card-header py-3 d-flex flex-row align-items-center justify-content-between">
                     <h6 class="m-0 font-weight-bold text-dark"><i class="fa fa-calendar mr-3"></i>`+data[index].tgl_tes+`</h6>
                     <div class="dropdown no-arrow">
                         <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
