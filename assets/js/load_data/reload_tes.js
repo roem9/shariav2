@@ -17,40 +17,17 @@ function loadPagination(pagno){
 
     if(result.total_rows != 0) {
         
-        if(result.result.length != 0){
+        if(result.total_rows_perpage != 0){
             
             $('#pagination').html(result.pagination);
             createTable(result.result,result.row);
 
         } else {
-            
             pageback = pagno - 1;
             let result = ajax(url_base+"tes/loadRecord/"+pageback, "POST", "");
 
-            if(result.result.length != 0){
-            
-                $('#pagination').html(result.pagination);
-                createTable(result.result,result.row);
-
-            } else {
-                
-                pagenext = pagno + 1;
-                let result = ajax(url_base+"tes/loadRecord/"+pagnext, "POST", "");
-
-                if(result.result.length != 0){
-                
-                    $('#pagination').html(result.pagination);
-                    createTable(result.result,result.row);
-
-                } else {
-                    
-                    html = `<div class="col-12"><div class="alert alert-warning"><i class="fa fa-exclamation-circle text-warning mr-1"></i>Data tes kosong</div></div>`
-                    $("#dataAjax").html(html);
-                
-                }
-
-            }
-
+            $('#pagination').html(result.pagination);
+            createTable(result.result,result.row);
         }
 
     } else {
