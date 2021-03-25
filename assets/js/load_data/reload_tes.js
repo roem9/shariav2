@@ -15,6 +15,8 @@ loadPagination(0);
 function loadPagination(pagno){
     let result = ajax(url_base+"tes/loadRecord/"+pagno, "POST", "");
 
+    console.log(result.total_rows)
+    
     if(result.total_rows != 0) {
         
         if(result.total_rows_perpage != 0){
@@ -33,7 +35,6 @@ function loadPagination(pagno){
     } else {
         html = `<div class="col-12"><div class="alert alert-warning"><i class="fa fa-exclamation-circle text-warning mr-1"></i>Data tes kosong</div></div>`
         $("#dataAjax").html(html);
-
     }
     
 }

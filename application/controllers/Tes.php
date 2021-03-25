@@ -72,6 +72,8 @@ class Tes extends CI_Controller {
     
         // Get records
         $record = $this->Main_model->get_all_limit("tes", ["hapus" => 0], "tgl_tes", "DESC", $rowno, $rowperpage);
+
+        $users_record = [];
         foreach ($record as $i => $record) {
             $users_record[$i] = $record;
             $users_record[$i]['id_hasil'] = md5($record['id_tes']);
