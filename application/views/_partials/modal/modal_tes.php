@@ -15,6 +15,10 @@
                     <input type="date" name="tgl_tes" id="tgl_tes_add" class="form-control form-control-sm required">
                 </div>
                 <div class="form-group">
+                    <label for="tgl_pengumuman_edit">Tgl Pengumuman</label>
+                    <input type="date" name="tgl_pengumuman" id="tgl_pengumuman_add" class="form-control form-control-sm required">
+                </div>
+                <div class="form-group">
                     <label for="tipe_soal_add">Tipe Soal</label>
                     <select name="tipe_soal" id="tipe_soal_add" class="form-control form-control-sm required">
                         <option value="">Pilih Tipe Soal</option>
@@ -65,6 +69,10 @@
                 <div class="form-group">
                     <label for="tgl_tes_edit">Tgl Tes</label>
                     <input type="date" name="tgl_tes" id="tgl_tes_edit" class="form-control form-control-sm required">
+                </div>
+                <div class="form-group">
+                    <label for="tgl_pengumuman_edit">Tgl Pengumuman</label>
+                    <input type="date" name="tgl_pengumuman" id="tgl_pengumuman_edit" class="form-control form-control-sm required">
                 </div>
                 <div class="form-group">
                     <label for="tipe_soal_edit">Tipe Soal</label>

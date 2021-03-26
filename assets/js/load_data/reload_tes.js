@@ -73,6 +73,7 @@ function createTable(data,sno){
                     </div>
                 </div>
                 <div class="card-body text-gray-900">
+                    <p><i class="fa fa-bullhorn text-warning mr-2"></i> `+data[index].tgl_pengumuman+`</p>
                     <p><i class="fa fa-info-circle text-info mr-2"></i> `+data[index].status+`</p>
                     <p><i class="fa fa-file-alt text-success mr-3"></i> Soal `+data[index].tipe_soal+`</p>
                     <p><i class="fa fa-key text-danger mr-2"></i> `+data[index].password+`</p>

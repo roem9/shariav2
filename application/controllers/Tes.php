@@ -79,6 +79,7 @@ class Tes extends CI_Controller {
             $users_record[$i]['id_hasil'] = md5($record['id_tes']);
             $users_record[$i]['link'] = 'https://toafl.id/soal/id/'.md5($record['id_tes']);
             $users_record[$i]['tgl_tes'] = date("d-M-Y", strtotime($record['tgl_tes']));
+            $users_record[$i]['tgl_pengumuman'] = $this->hari_ini(date("D", strtotime($record['tgl_pengumuman']))) . ", " . $this->tgl_indo(date("d-M-Y", strtotime($record['tgl_pengumuman'])));
             $users_record[$i]['peserta'] = COUNT($this->Main_model->get_all("peserta_toafl", ["id_tes" => $record['id_tes']]));
         }
         // $users_record = $this->Tes_model->getData($rowno,$rowperpage);
@@ -126,6 +127,7 @@ class Tes extends CI_Controller {
         public function add_tes(){
             $data = [
                 "tgl_tes" => $this->input->post("tgl_tes"),
+                "tgl_pengumuman" => $this->input->post("tgl_pengumuman"),
                 "tipe_soal" => $this->input->post("tipe_soal"),
                 "password" => $this->input->post("password"),
                 "status" => "Berjalan",
@@ -155,6 +157,7 @@ class Tes extends CI_Controller {
             
             $data = [
                 "tgl_tes" => $this->input->post("tgl_tes"),
+                "tgl_pengumuman" => $this->input->post("tgl_pengumuman"),
                 "tipe_soal" => $this->input->post("tipe_soal"),
                 "password" => $this->input->post("password"),
                 "status" => $this->input->post("status"),
@@ -173,7 +176,7 @@ class Tes extends CI_Controller {
         public function hapus_tes(){
             $id_tes = $this->input->post("id_tes");
 
-            $data = $this->Main_model->edit_data("tes", ["id_tes" => $id_tes], ["hapus" => 1]);
+            $data = $this->Main_model->edit_data("tes", ["id_tes" => $id_tes], ["hapus" => 1, "status" => "Selesai"]);
             if($data){
                 echo json_encode("1");
             } else {
@@ -182,6 +185,69 @@ class Tes extends CI_Controller {
         }
     // delete
 
+    // other 
+        function hari_ini($hari){
+            // $hari = date ("D");
+        
+            switch($hari){
+                case 'Sun':
+                    $hari_ini = "Minggu";
+                break;
+        
+                case 'Mon':			
+                    $hari_ini = "Senin";
+                break;
+        
+                case 'Tue':
+                    $hari_ini = "Selasa";
+                break;
+        
+                case 'Wed':
+                    $hari_ini = "Rabu";
+                break;
+        
+                case 'Thu':
+                    $hari_ini = "Kamis";
+                break;
+        
+                case 'Fri':
+                    $hari_ini = "Jumat";
+                break;
+        
+                case 'Sat':
+                    $hari_ini = "Sabtu";
+                break;
+                
+                default:
+                    $hari_ini = "Tidak di ketahui";		
+                break;
+            }
+        
+            return $hari_ini;
+        
+        }
+
+        public function tgl_indo($tgl){
+            $data = explode("-", $tgl);
+            $hari = $data[0];
+            $bulan = $data[1];
+            $tahun = $data[2];
+    
+            if($bulan == "01") $bulan = "Januari";
+            if($bulan == "02") $bulan = "Februari";
+            if($bulan == "03") $bulan = "Maret";
+            if($bulan == "04") $bulan = "April";
+            if($bulan == "05") $bulan = "Mei";
+            if($bulan == "06") $bulan = "Juni";
+            if($bulan == "07") $bulan = "Juli";
+            if($bulan == "08") $bulan = "Agustus";
+            if($bulan == "09") $bulan = "September";
+            if($bulan == "10") $bulan = "Oktober";
+            if($bulan == "11") $bulan = "November";
+            if($bulan == "12") $bulan = "Desember";
+    
+            return $hari . " " . $bulan . " " . $tahun;
+        }
 }
 
 /* End of file Tes.php */

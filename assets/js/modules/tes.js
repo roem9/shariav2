@@ -10,6 +10,7 @@ $("#btnAddTes").click(function(){
     }).then(function (result) {
         if (result.value) {
             let tgl_tes = $("#tgl_tes_add").val();
+            let tgl_pengumuman = $("#tgl_pengumuman_add").val();
             let tipe_soal = $("#tipe_soal_add").val();
             let password = $("#password_add").val();
 
@@ -22,7 +23,7 @@ $("#btnAddTes").click(function(){
                     text: 'lengkapi isi form terlebih dahulu'
                 })
             } else {
-                data = {tgl_tes: tgl_tes, tipe_soal: tipe_soal, password: password}
+                data = {tgl_tes: tgl_tes, tgl_pengumuman: tgl_pengumuman, tipe_soal: tipe_soal, password: password}
                 let result = ajax(url_base+"tes/add_tes", "POST", data);
 
                 if(result == 1){
@@ -57,6 +58,7 @@ $(document).on("click",".btnEditTes", function(){
     
     $("#id_tes_edit").val(result.id_tes);
     $("#tgl_tes_edit").val(result.tgl_tes);
+    $("#tgl_pengumuman_edit").val(result.tgl_pengumuman);
     $("#tipe_soal_edit").val(result.tipe_soal);
     $("#password_edit").val(result.password);
     $("#status_edit").val(result.status);
@@ -76,6 +78,7 @@ $("#btnEditTes").click(function(){
             
             let id_tes = $("#id_tes_edit").val();
             let tgl_tes = $("#tgl_tes_edit").val();
+            let tgl_pengumuman = $("#tgl_pengumuman_edit").val();
             let tipe_soal = $("#tipe_soal_edit").val();
             let password = $("#password_edit").val();
             let status = $("#status_edit").val();
@@ -89,7 +92,7 @@ $("#btnEditTes").click(function(){
                     text: 'lengkapi isi form terlebih dahulu'
                 })
             } else {
-                data = {id_tes: id_tes, tgl_tes: tgl_tes, tipe_soal: tipe_soal, password: password, status: status}
+                data = {id_tes: id_tes, tgl_tes: tgl_tes, tgl_pengumuman: tgl_pengumuman, tipe_soal: tipe_soal, password: password, status: status}
                 let result = ajax(url_base+"tes/edit_tes", "POST", data);
 
                 if(result == 1){
