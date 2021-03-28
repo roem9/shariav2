@@ -257,7 +257,7 @@ class Tes extends CI_Controller {
 
     // generate 
     public function generate_jawaban(){
-        $tes = $this->Admin_model->get_one("tes", ["id_tes" => "22"]);
+        $tes = $this->Main_model->get_one("tes", ["id_tes" => "22"]);
         // $tes = $this->Main_model->get_one("tes", ["id_tes" => "13"]);
         $peserta = $this->Main_model->get_all("peserta_toafl", ["id_tes" => $tes['id_tes'], "generate" => 0]);
 
