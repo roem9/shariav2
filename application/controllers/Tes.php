@@ -9,9 +9,14 @@ class Tes extends CI_Controller {
     public function __construct() {
         parent::__construct();
         $this->load->model("Main_model");
+        $this->load->model("Soal_model");
     
         // Load Pagination library
         $this->load->library('pagination');
+
+        ini_set('xdebug.var_display_max_depth', '10');
+        ini_set('xdebug.var_display_max_children', '256');
+        ini_set('xdebug.var_display_max_data', '1024');
         
         if(!$this->session->userdata('admintoafl')){
             $this->session->set_flashdata('pesan', '<div class="alert alert-danger alert-dismissible fade show" role="alert"><i class="fa fa-times-circle text-danger mr-1"></i> Maaf Anda harus login terlebih dahulu<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div');
@@ -248,6 +253,104 @@ class Tes extends CI_Controller {
     
             return $hari . " " . $bulan . " " . $tahun;
         }
+    //
+
+    // generate 
+    public function generate_jawaban(){
+        $tes = $this->Admin_model->get_one("tes", ["id_tes" => "22"]);
+        // $tes = $this->Main_model->get_one("tes", ["id_tes" => "13"]);
+        $peserta = $this->Main_model->get_all("peserta_toafl", ["id_tes" => $tes['id_tes'], "generate" => 0]);
+
+        foreach ($peserta as $i => $peserta) {
+            if($i == 300) {
+                echo "Sukses";
+                exit();
+            }
+
+            $jawaban = str_replace("/salah", "", $peserta['text']);
+            $jawaban = str_replace("/benar", "", $jawaban);
+            $data_jawaban = explode("###", $jawaban);
+
+            // var_dump($jawaban);
+            // exit();
+
+            if($tes['tipe_soal'] == 1){
+                $soal = $this->Soal_model->get_soal_istima();
+            } else if($tes['tipe_soal'] == 2){
+                $soal = $this->Soal_model->get_soal_istimav2();
+            }
+    
+            // $jawaban = $this->input->post("soal_istima");
+            $jawaban = array_slice($data_jawaban, 0, 50);
+            // var_dump($jawaban);
+            $text = "";
+            $nilai_istima = 0;
+    
+            foreach ($soal as $i => $soal) {
+                if($soal['jawaban'] == $jawaban[$i]){
+                    $nilai_istima += 1;
+                    $status = "benar";
+                } else {
+                    $status = "salah";
+                }
+    
+                $text .= $jawaban[$i]."/".$status."###";
+            }
+    
+            if($tes['tipe_soal'] == 1){
+                $soal = $this->Soal_model->get_soal_tarakib();
+            } else if($tes['tipe_soal'] == 2){
+                $soal = $this->Soal_model->get_soal_tarakibv2();
+            }
+            // $jawaban = $this->input->post("soal_tarakib");
+            $jawaban = array_slice($data_jawaban, 50, 40);
+    
+            $nilai_tarakib = 0;
+    
+            foreach ($soal as $i => $soal) {
+                if($soal['jawaban'] == $jawaban[$i]){
+                    $nilai_tarakib += 1;
+                    $status = "benar";
+                } else {
+                    $status = "salah";
+                }
+    
+                $text .= $jawaban[$i]."/".$status."###";
+            }
+    
+            if($tes['tipe_soal'] == 1){
+                $soal = $this->Soal_model->get_soal_qiroah();
+            } else if($tes['tipe_soal'] == 2){
+                $soal = $this->Soal_model->get_soal_qiroahv2();
+            }
+    
+            // $jawaban = $this->input->post("soal_qiroah");
+            $jawaban = array_slice($data_jawaban, 90, 50);
+    
+            $nilai_qiroah = 0;
+    
+            foreach ($soal as $i => $soal) {
+                if($soal['jawaban'] == $jawaban[$i]){
+                    $nilai_qiroah += 1;
+                    $status = "benar";
+                } else {
+                    $status = "salah";
+                }
+    
+                $text .= $jawaban[$i]."/".$status."###";
+            }
+    
+            $data = [
+                "nilai_istima" => $nilai_istima,
+                "nilai_tarakib" => $nilai_tarakib,
+                "nilai_qiroah" => $nilai_qiroah,
+                "text" => $text,
+                "generate" => 1
+            ];
+    
+            $id = $this->Main_model->edit_data("peserta_toafl", ["id" => $peserta['id']], $data);
+        }
+    }
 }
 
 /* End of file Tes.php */
