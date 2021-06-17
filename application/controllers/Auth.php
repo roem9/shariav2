@@ -17,7 +17,7 @@ class Auth extends CI_Controller {
             $this->login();
         } else {
             // ambil cookie
-            $cookie = get_cookie('admintoafl');
+            $cookie = get_cookie('sharia');
             // cek session
             if ($this->session->userdata('username')) {
                 redirect(base_url("home"));
@@ -29,11 +29,11 @@ class Auth extends CI_Controller {
                     $this->_daftarkan_session($row);
                 } else {
                     $data['title'] = 'Login';
-                    $this->load->view("pages/auth/login", $data);
+                    $this->load->view("pages/auth/sign-in", $data);
                 }
             } else {
                 $data['title'] = 'Login';
-                $this->load->view("pages/auth/login", $data);
+                $this->load->view("pages/auth/sign-in", $data);
             }
         }
     }
@@ -49,7 +49,7 @@ class Auth extends CI_Controller {
             // 1. Buat Cookies jika remember di check
             if ($remember) {
                 $key = random_string('alnum', 64);
-                set_cookie('admintoafl', $key, 3600*24*365); // set expired 30 hari kedepan
+                set_cookie('sharia', $key, 3600*24*365); // set expired 30 hari kedepan
                 // simpan key di database
                 
                 $this->Main_model->edit_data("admin", ["id_admin" => $row['id_admin']], ["cookie" => $key]);
@@ -57,27 +57,43 @@ class Auth extends CI_Controller {
             $this->_daftarkan_session($row);
         } else {
 
-            $this->session->set_flashdata('pesan', '<div class="alert alert-danger alert-dismissible fade show" role="alert"><i class="fa fa-times-circle text-danger mr-1"></i> Login gagal, kombinasi username dan password salah<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+            $this->session->set_flashdata('pesan', '
+                <div class="alert alert-important alert-danger alert-dismissible" role="alert">
+                <div class="d-flex">
+                <div>
+                    <svg width="24" height="24" class="alert-icon">
+                        <use xlink:href="'.base_url().'assets/tabler-icons-1.39.1/tabler-sprite.svg#tabler-alert-circle" />
+                    </svg>
+                </div>
+                <div>
+                    Kombinasi username dan password salah
+                </div>
+                </div>
+                <a class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="close"></a>
+            </div>
+            ');
             
             $data['title'] = 'Login';
-            $this->load->view("pages/auth/login", $data);
+            $this->load->view("pages/auth/sign-in", $data);
         }
     }
 
     public function _daftarkan_session($row) {
         // 1. Daftarkan Session
         $sess = array(
-            'admintoafl' => $row['username']
+            'sharia' => $row['username'],
+            'level' => $row['level']
         );
 
         $this->session->set_userdata($sess);
+
         // 2. Redirect ke home
         redirect(base_url("home"));
     }
 
     public function logout(){
         // delete cookie dan session
-        delete_cookie('admintoafl');
+        delete_cookie('sharia');
         $this->session->sess_destroy();
         redirect(base_url("auth"));
     }

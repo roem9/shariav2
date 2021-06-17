@@ -1,66 +1,174 @@
-<!-- Topbar -->
-<nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+<div class="navbar-expand-md">
+    <div class="collapse navbar-collapse" id="navbar-menu">
+        <div class="navbar navbar-light">
+        <div class="container-xl">
+            <ul class="navbar-nav">
+            <li class="nav-item dropdown" id="Marketing">
+                <a class="nav-link dropdown-toggle" href="#navbar-base" data-bs-toggle="dropdown" role="button" aria-expanded="false" >
+                    <span class="nav-link-icon d-md-none d-lg-inline-block">
+                        <svg width="24" height="24" class="me-3">
+                            <use xlink:href="<?= base_url()?>assets/tabler-icons-1.39.1/tabler-sprite.svg#tabler-user" />
+                        </svg> 
+                    </span>
+                    <span class="nav-link-title">
+                        Marketing
+                    </span>
+                </a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" id="SI" href="<?= base_url()?>marketing/si" >
+                        Sharia Institute
+                    </a>
+                    <a class="dropdown-item" id="Agency" href="<?= base_url()?>marketing/agency" >
+                        Agency Partner
+                    </a>
+                    <a class="dropdown-item" id="arsipSi" href="<?= base_url()?>marketing/si/arsip" >
+                        Arsip Sharia Institute
+                    </a>
+                    <a class="dropdown-item" id="arsipAgency" href="<?= base_url()?>marketing/agency/arsip" >
+                        Arsip Agency Partner
+                    </a>
+                </div>
+            </li>
+            <?php if($this->session->userdata("level") == "Super Admin") :?>
+                <li class="nav-item" id="Lac">
+                    <a class="nav-link" href="<?= base_url()?>lac" >
+                        <span class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/checkbox -->
+                            <svg width="24" height="24" class="me-3">
+                                <use xlink:href="<?= base_url()?>assets/tabler-icons-1.39.1/tabler-sprite.svg#tabler-man" />
+                            </svg> 
+                        </span>
+                        <span class="nav-link-title">
+                            LAC
+                        </span>
+                    </a>
+                </li>
+            <?php endif;?>
 
-<!-- Sidebar Toggle (Topbar) -->
-<button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-    <i class="fa fa-bars"></i>
-</button>
+            <?php if($this->session->userdata("level") == "Super Admin") :?>
+                <li class="nav-item dropdown" id="Batch">
+                    <a class="nav-link dropdown-toggle" href="#navbar-base" data-bs-toggle="dropdown" role="button" aria-expanded="false" >
+                        <span class="nav-link-icon d-md-none d-lg-inline-block">
+                            <svg width="24" height="24" class="me-3">
+                                <use xlink:href="<?= base_url()?>assets/tabler-icons-1.39.1/tabler-sprite.svg#tabler-stack" />
+                            </svg> 
+                        </span>
+                        <span class="nav-link-title">
+                            Batch
+                        </span>
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" id="listBatch" href="<?= base_url()?>agency/batch" >
+                            List Batch
+                        </a>
+                        <a class="dropdown-item" id="listAgency" href="<?= base_url()?>agency/list" >
+                            List Agency
+                        </a>
+                        <a class="dropdown-item" id="listBatchKonfirmasi" href="<?= base_url()?>agency/konfirmasi" >
+                            Konfirmasi Agency
+                        </a>
+                    </div>
+                </li>
+            <?php else :?>
+                <li class="nav-item" id="Batch">
+                    <a class="nav-link" href="<?= base_url()?>agency/batch" >
+                        <span class="nav-link-icon d-md-none d-lg-inline-block">
+                            <svg width="24" height="24" class="me-3">
+                                <use xlink:href="<?= base_url()?>assets/tabler-icons-1.39.1/tabler-sprite.svg#tabler-stack" />
+                            </svg> 
+                        </span>
+                        <span class="nav-link-title">
+                            Batch
+                        </span>
+                    </a>
+                </li>
+            <?php endif;?>
 
-<!-- Topbar Search -->
-<?php if($menu == "Toko" || $menu == "Barang" || $menu == "Menunggu Pengambilan") :?>
-<form
-    class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-    <div class="input-group">
-        <?php if($menu == "Toko") :?>
-            <input type="text" id="searchNavbar" class="form-control bg-light border-0 small" placeholder="Cari toko ...." aria-label="Search" aria-describedby="basic-addon2">
-        <?php elseif($menu == "Barang") :?>
-            <input type="text" id="searchNavbar" class="form-control bg-light border-0 small" placeholder="Cari barang ...." aria-label="Search" aria-describedby="basic-addon2">
-        <?php elseif($menu == "Menunggu Pengambilan") :?>
-            <input type="text" id="searchNavbar" class="form-control bg-light border-0 small" placeholder="Cari toko ...." aria-label="Search" aria-describedby="basic-addon2">
-        <?php endif;?>
-        
-        <div class="input-group-append">
-            <button class="btn btn-primary" type="button" id="btnSearchNavbar">
-                <i class="fas fa-search fa-sm"></i>
-            </button>
+            <?php if($this->session->userdata("level") == "Super Admin") :?>
+                <li class="nav-item dropdown" id="Desain">
+                    <a class="nav-link dropdown-toggle" href="#navbar-base" data-bs-toggle="dropdown" role="button" aria-expanded="false" >
+                        <span class="nav-link-icon d-md-none d-lg-inline-block">
+                            <svg width="24" height="24" class="me-3">
+                                <use xlink:href="<?= base_url()?>assets/tabler-icons-1.39.1/tabler-sprite.svg#tabler-file-certificate" />
+                            </svg> 
+                        </span>
+                        <span class="nav-link-title">
+                            Desain Akad
+                        </span>
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" id="AkadAgency" href="<?= base_url()?>desainakad/agency" >
+                            Akad Agency
+                        </a>
+                        <a class="dropdown-item" id="AkadAgencyForm" href="<?= base_url()?>desainakad/agency/form" >
+                            Akad Agency (Form)
+                        </a>
+                        <a class="dropdown-item" id="AkadSI" href="<?= base_url()?>desainakad/marketing_si" >
+                            Akad Marketing SI
+                        </a>
+                        <a class="dropdown-item" id="AkadSIForm" href="<?= base_url()?>desainakad/marketing_si/form" >
+                            Akad Marketing SI (Form)
+                        </a>
+                        <a class="dropdown-item" id="AkadAgency" href="<?= base_url()?>desainakad/marketing_agency" >
+                            Akad Marketing Agency
+                        </a>
+                        <a class="dropdown-item" id="AkadAgencyForm" href="<?= base_url()?>desainakad/marketing_agency/form" >
+                            Akad Marketing Agency (Form)
+                        </a>
+                    </div>
+                </li>
+            <?php endif;?>
+
+            <?php if($this->session->userdata("level") == "Super Admin") :?>
+                <li class="nav-item dropdown" id="Akad">
+                    <a class="nav-link dropdown-toggle" href="#navbar-base" data-bs-toggle="dropdown" role="button" aria-expanded="false" >
+                        <span class="nav-link-icon d-md-none d-lg-inline-block">
+                            <svg width="24" height="24" class="me-3">
+                                <use xlink:href="<?= base_url()?>assets/tabler-icons-1.39.1/tabler-sprite.svg#tabler-mail" />
+                            </svg> 
+                        </span>
+                        <span class="nav-link-title">
+                            List Akad
+                        </span>
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" id="listAkadAgency" href="<?= base_url()?>akad/list/agency" >
+                            Akad Agency
+                        </a>
+                        <a class="dropdown-item" id="listAkadMarketingSI" href="<?= base_url()?>akad/list/marketing_si" >
+                            Akad Marketing SI
+                        </a>
+                        <a class="dropdown-item" id="listAkadMarketingAgency" href="<?= base_url()?>akad/list/marketing_agency" >
+                            Akad Marketing Agency
+                        </a>
+                    </div>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#navbar-base" data-bs-toggle="dropdown" role="button" aria-expanded="false" >
+                        <span class="nav-link-icon d-md-none d-lg-inline-block">
+                            <svg width="24" height="24" class="me-3">
+                                <use xlink:href="<?= base_url()?>assets/tabler-icons-1.39.1/tabler-sprite.svg#tabler-file-export" />
+                            </svg> 
+                        </span>
+                        <span class="nav-link-title">
+                            Export
+                        </span>
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="<?= base_url()?>marketing/export/marketing_si" >
+                            Marketing SI
+                        </a>
+                        <a class="dropdown-item" href="<?= base_url()?>marketing/export/marketing_agency" >
+                            Marketing Agency
+                        </a>
+                        <a class="dropdown-item" href="<?= base_url()?>agency/export" >
+                            Agency
+                        </a>
+                    </div>
+                </li>
+            <?php endif;?>
+            </ul>
+        </div>
         </div>
     </div>
-</form>
-<?php endif;?>
-
-<!-- Topbar Navbar -->
-<ul class="navbar-nav ml-auto">
-    <!-- nav items plus for toko -->
-    <?php if($menu) :?>
-        <?php if($menu == "Tes"):?>
-            <li class="nav-item dropdown no-arrow mx-1">
-                <a class="nav-link dropdown-toggle" data-toggle="modal" href="#addTes" id="btnPlusTes" role="button" aria-haspopup="true" aria-expanded="false">
-                    <i class="fas fa-plus"></i>
-                </a>
-            </li>
-        <?php endif;?>
-    <?php endif;?>
-
-    <div class="topbar-divider d-none d-sm-block"></div>
-
-    <!-- Nav Item - User Information -->
-    <li class="nav-item dropdown no-arrow">
-        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
-            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?= $this->session->userdata('username')?></span>
-            <img class="img-profile rounded-circle"
-                src="<?= base_url()?>assets/img/undraw_profile.svg">
-        </a>
-        <!-- Dropdown - User Information -->
-        <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-            <a class="dropdown-item" href="<?= base_url()?>auth/logout">
-                <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                Logout
-            </a>
-        </div>
-    </li>
-
-</ul>
-
-</nav>
-<!-- End of Topbar -->
+</div>
