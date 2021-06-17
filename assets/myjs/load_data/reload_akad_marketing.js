@@ -16,7 +16,7 @@ var datatable = $('#dataTable').DataTable({
     columns: [
         {"data": "no_doc", render : function(row, data, iDisplayIndex){
             if(iDisplayIndex.no_document == 0) return "";
-            else return iDisplayIndex.no_doc;
+            else return iDisplayIndex.no;
         }},
         {"data": "nama"},
         {"data": "tgl_akad"},

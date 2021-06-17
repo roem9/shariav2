@@ -21,7 +21,7 @@ class Akad_model extends MY_Model {
             $this->datatables->select("CONVERT(no_doc, UNSIGNED INTEGER) AS no_document, no_doc, nama_marketing as nama, kd_marketing, id_akad, tgl_akad, nama_lac as nama_bagian");
             $this->datatables->from("akad_marketing_si as a");
             $this->datatables->join("lac as b", "a.id_lac = b.id_lac");
-            $this->datatables->edit_column('no_doc', '$1','no_doc_marketing_si(no_doc, tgl_akad)');
+            $this->datatables->add_column('no', '$1','no_doc_marketing_si(no_doc, tgl_akad)');
             $this->datatables->add_column('link', '
             <a href="'.base_url().'akad/marketing/si/$1" target="_blank" class="btn btn-success">'.tablerIcon("link", "me-1").' Link</a>','md5(id_akad)');
             $this->datatables->add_column('detail', '
@@ -46,7 +46,7 @@ class Akad_model extends MY_Model {
             $this->datatables->select("CONVERT(no_doc, UNSIGNED INTEGER) AS no_document, no_doc, nama_marketing as nama, kd_marketing, id_akad, a.tgl_akad, nama_agency as nama_bagian, a.id_agency");
             $this->datatables->from("akad_marketing_agency as a");
             $this->datatables->join("agency as b", "a.id_agency = b.id_agency");
-            $this->datatables->edit_column('no_doc', '$1','no_doc_marketing_agency(no_doc, tgl_akad, id_agency)');
+            $this->datatables->add_column('no', '$1','no_doc_marketing_agency(no_doc, tgl_akad, id_agency)');
             $this->datatables->add_column('link', '
             <a href="'.base_url().'akad/marketing/agency/$1" target="_blank" class="btn btn-success">'.tablerIcon("link", "me-1").' Link</a>','md5(id_akad)');
             $this->datatables->add_column('detail', '
@@ -71,7 +71,7 @@ class Akad_model extends MY_Model {
             $this->datatables->select("CONVERT(no_doc, UNSIGNED INTEGER) AS no_document, no_doc, nama_agency as nama, id_agency, id_akad, tgl_akad, nama_batch as nama_bagian, no_batch");
             $this->datatables->from("akad_agency as a");
             $this->datatables->join("batch as b", "a.id_batch = b.id_batch");
-            $this->datatables->edit_column('no_doc', '$1','no_doc_agency(no_doc, no_batch, tgl_akad)');
+            $this->datatables->add_column('no', '$1','no_doc_agency(no_doc, no_batch, tgl_akad)');
             $this->datatables->add_column('link', '
                 <a href="'.base_url().'akad/agency/$1" target="_blank" class="btn btn-success">'.tablerIcon("link", "me-1").' Link</a>','md5(id_akad)');
             
