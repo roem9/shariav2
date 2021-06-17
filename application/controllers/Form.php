@@ -112,45 +112,45 @@ class Form extends CI_Controller {
     }
 
     public function check_data(){
-        // $email = $this->input->post("email");
-        // $no_hp = $this->input->post("no_hp");
-        // $no_wa = $this->input->post("no_wa");
+        $email = $this->input->post("email");
+        $no_hp = $this->input->post("no_hp");
+        $no_wa = $this->input->post("no_wa");
 
-        // $cek_email = $this->Main_model->get_one("marketing_si", ["email" => $email]);
-        // if($cek_email) {
-        //     echo json_encode("Maaf, Email Anda telah digunakan");
-        //     exit();
-        // } else {
-        //     $cek_email = $this->Main_model->get_one("marketing_agency", ["email" => $email]);
-        //     if($cek_email){
-        //         echo json_encode("Maaf, Email Anda telah digunakan");
-        //         exit();
-        //     }
-        // }
+        $cek_email = $this->Main_model->get_one("marketing_si", ["email" => $email]);
+        if($cek_email) {
+            echo json_encode("Maaf, Email Anda telah digunakan");
+            exit();
+        } else {
+            $cek_email = $this->Main_model->get_one("marketing_agency", ["email" => $email]);
+            if($cek_email){
+                echo json_encode("Maaf, Email Anda telah digunakan");
+                exit();
+            }
+        }
 
-        // $cek_no_hp = $this->Main_model->get_one("marketing_si", ["no_hp" => $no_hp]);
-        // if($cek_no_hp) {
-        //     echo json_encode("Maaf, No. Handphone Anda telah digunakan");
-        //     exit();
-        // } else {
-        //     $cek_no_hp = $this->Main_model->get_one("marketing_agency", ["no_hp" => $no_hp]);
-        //     if($cek_no_hp){
-        //         echo json_encode("Maaf, No. Handphone Anda telah digunakan");
-        //         exit();
-        //     }
-        // }
+        $cek_no_hp = $this->Main_model->get_one("marketing_si", ["no_hp" => $no_hp]);
+        if($cek_no_hp) {
+            echo json_encode("Maaf, No. Handphone Anda telah digunakan");
+            exit();
+        } else {
+            $cek_no_hp = $this->Main_model->get_one("marketing_agency", ["no_hp" => $no_hp]);
+            if($cek_no_hp){
+                echo json_encode("Maaf, No. Handphone Anda telah digunakan");
+                exit();
+            }
+        }
         
-        // $cek_no_wa = $this->Main_model->get_one("marketing_si", ["no_wa" => $no_wa]);
-        // if($cek_no_wa) {
-        //     echo json_encode("Maaf, No. Whatsapp Anda telah digunakan");
-        //     exit();
-        // } else {
-        //     $cek_no_wa = $this->Main_model->get_one("marketing_agency", ["no_wa" => $no_wa]);
-        //     if($cek_no_wa){
-        //         echo json_encode("Maaf, No. Whatsapp Anda telah digunakan");
-        //         exit();
-        //     }
-        // }
+        $cek_no_wa = $this->Main_model->get_one("marketing_si", ["no_wa" => $no_wa]);
+        if($cek_no_wa) {
+            echo json_encode("Maaf, No. Whatsapp Anda telah digunakan");
+            exit();
+        } else {
+            $cek_no_wa = $this->Main_model->get_one("marketing_agency", ["no_wa" => $no_wa]);
+            if($cek_no_wa){
+                echo json_encode("Maaf, No. Whatsapp Anda telah digunakan");
+                exit();
+            }
+        }
     }
 
     public function add_marketing(){
@@ -234,6 +234,7 @@ class Form extends CI_Controller {
                     Silahkan disimpan dengan baik dan diingat untuk Kode Unik Marketingnya<br><br>
                     Kode Unik Marketing ini digunakan dengan baik dan bijak,<br><br>
                     PERHATIAN! : KODE UNIK MARKETING INI BERLAKU HANYA DI DALAM NAUNGAN TEAM MEMBER OF SHARIA GRUP INDONESIA<br><br>
+                    Silahkan mengakses link akad Anda melalui link ini : " . base_url() . "akad/member/marketingsi/" . md5($id) ."<br><br>
                     Terima Kasih banyak, kami do'akan selalu Anda makin closing rutin property setiap bulan dari satuan hingga puluhan unit, makin kaya berkah melimpah serta selalu bersyukur kepada Allah<br><br>
                     Aamiin...<br><br>
                     Akhirul Kalam,<br><br>
@@ -329,6 +330,7 @@ class Form extends CI_Controller {
                     Silahkan disimpan dengan baik dan diingat untuk Kode Unik Marketingnya<br><br>
                     Kode Unik Marketing ini digunakan dengan baik dan bijak,<br><br>
                     PERHATIAN! : KODE UNIK MARKETING INI BERLAKU HANYA DI DALAM NAUNGAN TEAM MEMBER OF SHARIA GRUP INDONESIA<br><br>
+                    Silahkan mengakses link akad Anda melalui link ini : " . base_url() . "akad/member/marketingagency/" . md5($id) ."<br><br>
                     Terima Kasih banyak, kami do'akan selalu Anda makin closing rutin property setiap bulan dari satuan hingga puluhan unit, makin kaya berkah melimpah serta selalu bersyukur kepada Allah<br><br>
                     Aamiin...<br><br>
                     Akhirul Kalam,<br><br>

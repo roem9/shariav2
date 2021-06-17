@@ -543,7 +543,7 @@ class Agency extends CI_Controller {
                         </tr>
                         <tr>
                             <td>URL Akad</td>
-                            <td>: " . base_url() . "akad/agency/" . md5($id_akad) ."</td>
+                            <td>: " . base_url() . "akad/member/agency/" . md5($id_agency) ."</td>
                         </tr>
                     </table>
                     <br><br><br><br><br>
