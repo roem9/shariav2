@@ -1,9 +1,3 @@
-var page = "";
-
-// id batch 
-var url = window.location.href;
-var id_batch = url.substring(url.indexOf("batch/") + 6);
-
 if(level == "Super Admin"){
     var datatable = $('#dataTable').DataTable({ 
         initComplete: function() {
