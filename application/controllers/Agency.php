@@ -146,7 +146,7 @@ class Agency extends CI_Controller {
             "ajax.js",
             "function.js",
             "helper.js",
-            "load_data/areload_all_agency.js",
+            "load_data/reload_all_agency.js",
             "modules/agency.js",
         ];
 

@@ -12,7 +12,11 @@ class Home extends CI_Controller {
 
     public function index(){
         
-        redirect(base_url('agency/batch'),'refresh');
+        $level = $this->session->userdata("level");
+        if($level == "Super Admin")
+            redirect(base_url('agency/batch'),'refresh');
+        else 
+            redirect(base_url('agency/list'),'refresh');
         
     }
 }
