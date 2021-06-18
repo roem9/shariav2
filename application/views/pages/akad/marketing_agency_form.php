@@ -85,6 +85,11 @@
             <td style="width: 10px" valign="top">:</td>
             <td><b><span class="domisili"></span></b><td>
         </tr>
+        <tr>
+            <td style="width: 125px">No. NPWP</td>
+            <td style="width: 10px">:</td>
+            <td><b><span class="npwp"></span></b><td>
+        </tr>
     </table>
     <p>Dalam hal ini bertindak untuk dan atas nama Agen Personal yang selanjutnya disebut sebagai <b>PIHAK KEDUA</b>.</p>
     <p>Kedua belah pihak telah sepakat mengadakan perjanjian kerjasama Pemasaran Tanah Kavling dan Unit Perumahan menurut ketentuan sebagaimana tercantum dalam pasal-pasal berikut:</p>
@@ -166,7 +171,7 @@
 
     <p class="fo-11"><i>Dokumen ini sah dengan persetujuan Pihak Kedua dalam bentuk klik/centang pada form digital dan tanpa perlu membutuhkan tanda tangan Pihak Kedua.</i></p>
 
-    <p class="fo-11"><i>Dokumen ini dikeluarkan dari Sistem PT SGI atas dasar data dari Pihak Kedua. Kebenaran dan keabsahan atas data yang ditampilkan dalam dokumen ini dan data yang tersimpan dalam Sistem PT SGI menjadi tanggung jawab Pihak Kedua sepenuhnya.</i></p>
+    <p class="fo-11"><i>Dokumen ini dikeluarkan dari Sistem PT SGI kepada Member Agency Property atas dasar data dari Pihak Kedua. Kebenaran dan keabsahan atas data yang ditampilkan dalam dokumen ini dan data yang tersimpan dalam Sistem PT SGI yang dituangkan ke Member Agency Property menjadi tanggung jawab Pihak Kedua sepenuhnya.</i></p>
 
     <input type="checkbox" name="setuju" id="setuju" class="me-1 form-4"><label for="setuju">Dengan ini setuju</label>
 </body></html>

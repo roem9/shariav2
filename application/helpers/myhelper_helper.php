@@ -227,3 +227,7 @@
         $kode_batch = str_replace("Batch ", "B", $data['nama_batch']);
         return "{$kode_batch}-{$id_agency}";
     }
+
+    function npwp($no_npwp){
+        return substr($no_npwp, 0, 2) . "." . substr($no_npwp, 2, 3) . "." . substr($no_npwp, 5, 3) . "." . substr($no_npwp, 8, 1) . "-" . substr($no_npwp, 9, 3) . "." . substr($no_npwp, 12, 3);
+    }

@@ -70,14 +70,14 @@
                 </li>
             <?php else :?>
                 <li class="nav-item" id="Batch">
-                    <a class="nav-link" href="<?= base_url()?>agency/batch" >
+                    <a class="nav-link" href="<?= base_url()?>agency/list" >
                         <span class="nav-link-icon d-md-none d-lg-inline-block">
                             <svg width="24" height="24" class="me-3">
-                                <use xlink:href="<?= base_url()?>assets/tabler-icons-1.39.1/tabler-sprite.svg#tabler-stack" />
+                                <use xlink:href="<?= base_url()?>assets/tabler-icons-1.39.1/tabler-sprite.svg#tabler-building-community" />
                             </svg> 
                         </span>
                         <span class="nav-link-title">
-                            Batch
+                            Agency
                         </span>
                     </a>
                 </li>
@@ -108,10 +108,10 @@
                         <a class="dropdown-item" id="AkadSIForm" href="<?= base_url()?>desainakad/marketing_si/form" >
                             Akad Marketing SI (Form)
                         </a>
-                        <a class="dropdown-item" id="AkadAgency" href="<?= base_url()?>desainakad/marketing_agency" >
+                        <a class="dropdown-item" id="AkadMarketingAgency" href="<?= base_url()?>desainakad/marketing_agency" >
                             Akad Marketing Agency
                         </a>
-                        <a class="dropdown-item" id="AkadAgencyForm" href="<?= base_url()?>desainakad/marketing_agency/form" >
+                        <a class="dropdown-item" id="AkadMarketingAgencyForm" href="<?= base_url()?>desainakad/marketing_agency/form" >
                             Akad Marketing Agency (Form)
                         </a>
                     </div>

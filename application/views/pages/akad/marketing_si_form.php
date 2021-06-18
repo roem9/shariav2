@@ -79,6 +79,11 @@
             <td style="width: 10px" valign="top">:</td>
             <td><b><span class="domisili"></span></b><td>
         </tr>
+        <tr>
+            <td style="width: 125px">Nomor NPWP</td>
+            <td style="width: 10px">:</td>
+            <td><b><span class="npwp"></span></b><td>
+        </tr>
     </table>
     <p>Dalam hal ini bertindak untuk dan atas nama Agen Personal yang selanjutnya disebut sebagai <b>PIHAK KEDUA</b>.</p>
     <p>Kedua belah pihak telah sepakat mengadakan perjanjian kerjasama Pemasaran Tanah Kavling dan Unit Perumahan menurut ketentuan sebagaimana tercantum dalam pasal-pasal berikut:</p>

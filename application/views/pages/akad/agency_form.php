@@ -51,6 +51,11 @@
             <td><b><span class="no_ktp"></span></b><td>
         </tr>
         <tr>
+            <td style="width: 125px">Nomor NPWP</td>
+            <td style="width: 10px">:</td>
+            <td><b><span class="npwp"></span></b><td>
+        </tr>
+        <tr>
             <td style="width: 125px" valign="top">Alamat</td>
             <td style="width: 10px" valign="top">:</td>
             <td><b><span class="alamat"></span></b><td>

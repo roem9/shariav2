@@ -74,9 +74,16 @@ $(document).on("click", ".profileAgency", function(){
     let data = {id_agency: id_agency};
     let result = ajax(url_base+"agency/get_agency", "POST", data)
     
-    $.each(result, function(key, value){
-        $(form+" [name='"+key+"']").val(value);
-    })
+    if(level == "Keuangan"){
+        $.each(result, function(key, value){
+            if(key == "npwp" && value != "") $(form+" [name='"+key+"']").val(npwp(value));
+            else $(form+" [name='"+key+"']").val(value);
+        })
+    } else {
+        $.each(result, function(key, value){
+            $(form+" [name='"+key+"']").val(value);
+        })
+    }
 })
 
 // edit agency

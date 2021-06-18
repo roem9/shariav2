@@ -11,10 +11,17 @@ $(document).on("click", ".detailMarketing", function(){
 
     let data = {id_marketing:id_marketing, table:table}
     let result = ajax(url_base+"marketing/get_marketing", "POST", data);
-    
-    $.each(result, function(key, value){
-        $(form+" [name='"+key+"']").val(value)
-    })
+
+    if(level == "Keuangan"){
+        $.each(result, function(key, value){
+            if(key == "no_npwp" && value != "") $(form+" [name='"+key+"']").val(npwp(value));
+            else $(form+" [name='"+key+"']").val(value);
+        })
+    } else {
+        $.each(result, function(key, value){
+            $(form+" [name='"+key+"']").val(value);
+        })
+    }
 
 })
 

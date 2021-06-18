@@ -24,15 +24,24 @@
                             <table id="dataTable" class="table card-table table-vcenter text-dark">
                                 <thead>
                                     <tr>
-                                        <th class="text-dark desktop w-1" style="font-size: 11px">Status</th>
-                                        <th class="text-dark desktop w-1" style="font-size: 11px">Logo</th>
-                                        <th class="text-dark desktop mobile-l mobile-p tablet-p tablet-l" style="font-size: 11px">Nama Agency</th>
-                                        <th class="text-dark desktop w-1" style="font-size: 11px">Batch</th>
-                                        <th class="text-dark desktop w-1" style="font-size: 11px">Marketing Aktif</th>
-                                        <th class="text-dark desktop w-1" style="font-size: 11px">Marketing Nonaktif</th>
-                                        <th class="text-dark desktop w-1" style="font-size: 11px">Marketing Total</th>
-                                        <th class="text-dark desktop w-1" style="font-size: 11px">Pdf</th>
-                                        <th class="text-dark desktop w-1" style="font-size: 11px">Menu</th>
+                                        <?php if($this->session->userdata('level') == "Super Admin") :?>
+                                            <th class="text-dark desktop w-1" style="font-size: 11px">Status</th>
+                                            <th class="text-dark desktop w-1" style="font-size: 11px">Logo</th>
+                                            <th class="text-dark desktop mobile-l mobile-p tablet-p tablet-l" style="font-size: 11px">Nama Agency</th>
+                                            <th class="text-dark desktop w-1" style="font-size: 11px">Batch</th>
+                                            <th class="text-dark desktop w-1" style="font-size: 11px">Marketing Aktif</th>
+                                            <th class="text-dark desktop w-1" style="font-size: 11px">Marketing Nonaktif</th>
+                                            <th class="text-dark desktop w-1" style="font-size: 11px">Marketing Total</th>
+                                            <th class="text-dark desktop w-1" style="font-size: 11px">Pdf</th>
+                                            <th class="text-dark desktop w-1" style="font-size: 11px">Menu</th>
+                                        <?php else :?>
+                                            <th class="text-dark desktop w-1" style="font-size: 11px">Status</th>
+                                            <th class="text-dark desktop w-1" style="font-size: 11px">Logo</th>
+                                            <th class="text-dark desktop mobile-l mobile-p tablet-p tablet-l" style="font-size: 11px">Nama Agency</th>
+                                            <th class="text-dark desktop" style="font-size: 11px">Nama Pemilik</th>
+                                            <th class="text-dark desktop w-1" style="font-size: 11px">Batch</th>
+                                            <th class="text-dark desktop w-1" style="font-size: 11px">Menu</th>
+                                        <?php endif;?>
                                     </tr>
                                 </thead>
                             </table>
@@ -57,6 +66,7 @@
     <script>
         $("#Batch").addClass("active")
         $("#<?= $dropdown?>").addClass("active");
+        var level = "<?= $this->session->userdata("level")?>"
     </script>
 
     <!-- load javascript -->

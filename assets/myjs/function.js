@@ -114,3 +114,7 @@ clipboard.on('success', function(e) {
         timer: 1500
     })
 });
+
+function npwp(no_npwp){
+    return no_npwp.substr(0, 2)+"."+no_npwp.substr(2, 3)+"."+no_npwp.substr(5, 3)+"."+no_npwp.substr(8, 1)+"-"+no_npwp.substr(9, 3)+"."+no_npwp.substr(12, 3);
+}

@@ -20,6 +20,7 @@ class Form extends CI_Controller {
         $data['masa_akhir'] = bulan_tahun(date('j-m-Y', strtotime("+1 years", strtotime($date))));
         
         $data['js'] = [
+            "function.js",
             "modules/other.js"
         ];
 
@@ -63,6 +64,7 @@ class Form extends CI_Controller {
         $this->load->helper('myhelper_helper');
 
         $data['js'] = [
+            "function.js",
             "modules/other.js"
         ];
         
@@ -229,12 +231,12 @@ class Form extends CI_Controller {
                     $subject = 'AGENCY PROPERTY MEMBER OF SHARIA GRUP INDONESIA';
                     $message = "
                     Terima kasih untuk Anda atas registrasi untuk Kode Unik Marketing<br><br>
-                    Anda telah terdaftar dengan Nomor Kode Unik Marketing (KUM) : {$kd_marketing} <br><br>
+                    Anda telah terdaftar dengan Nomor <b>Kode Unik Marketing (KUM) : {$kd_marketing}</b> <br><br>
                     Dan tergabung dalam Team Agency Sharia Institute Member of Sharia Grup Indonesia<br><br>
                     Silahkan disimpan dengan baik dan diingat untuk Kode Unik Marketingnya<br><br>
                     Kode Unik Marketing ini digunakan dengan baik dan bijak,<br><br>
                     PERHATIAN! : KODE UNIK MARKETING INI BERLAKU HANYA DI DALAM NAUNGAN TEAM MEMBER OF SHARIA GRUP INDONESIA<br><br>
-                    Silahkan mengakses link akad Anda melalui link ini : " . base_url() . "akad/member/marketingsi/" . md5($id) ."<br><br>
+                    Silahkan mengakses link akad Anda melalui link ini : <a href='" . base_url() . "akad/member/marketingsi/" . md5($id) ."'>" . base_url() . "akad/member/marketingsi/" . md5($id) ."</a><br><br>
                     Terima Kasih banyak, kami do'akan selalu Anda makin closing rutin property setiap bulan dari satuan hingga puluhan unit, makin kaya berkah melimpah serta selalu bersyukur kepada Allah<br><br>
                     Aamiin...<br><br>
                     Akhirul Kalam,<br><br>
@@ -325,12 +327,12 @@ class Form extends CI_Controller {
                     $subject = 'AGENCY PROPERTY MEMBER OF SHARIA GRUP INDONESIA';
                     $message = "
                     Terima kasih untuk Anda atas registrasi untuk Kode Unik Marketing<br><br>
-                    Anda telah terdaftar dengan Nomor Kode Unik Marketing (KUM) : {$kd_marketing} <br><br>
+                    Anda telah terdaftar dengan Nomor <b>Kode Unik Marketing (KUM) : {$kd_marketing}</b> <br><br>
                     Dan tergabung dalam Team Agency {$agency['nama_agency']} Member of Sharia Grup Indonesia<br><br>
                     Silahkan disimpan dengan baik dan diingat untuk Kode Unik Marketingnya<br><br>
                     Kode Unik Marketing ini digunakan dengan baik dan bijak,<br><br>
                     PERHATIAN! : KODE UNIK MARKETING INI BERLAKU HANYA DI DALAM NAUNGAN TEAM MEMBER OF SHARIA GRUP INDONESIA<br><br>
-                    Silahkan mengakses link akad Anda melalui link ini : " . base_url() . "akad/member/marketingagency/" . md5($id) ."<br><br>
+                    Silahkan mengakses link akad Anda melalui link ini : <a href='" . base_url() . "akad/member/marketingagency/" . md5($id) ."'>" . base_url() . "akad/member/marketingagency/" . md5($id) ."</a><br><br>
                     Terima Kasih banyak, kami do'akan selalu Anda makin closing rutin property setiap bulan dari satuan hingga puluhan unit, makin kaya berkah melimpah serta selalu bersyukur kepada Allah<br><br>
                     Aamiin...<br><br>
                     Akhirul Kalam,<br><br>
@@ -356,7 +358,7 @@ class Form extends CI_Controller {
                             </svg>
                         </div>
                         <div>
-                            Berhasil mendaftarkan data marketing Anda. Silahkan mengecek inbox atau spam pada email Anda untuk mendapatkan kode marketing
+                        Berhasil mendaftarkan data marketing Anda. Silahkan mengecek inbox atau spam pada email Anda untuk mendapatkan kode marketing dan klik link Akad yang berwarna biru pada inbox untuk melihat akad Anda.
                         </div>
                     </div>
                     <a class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="close"></a>

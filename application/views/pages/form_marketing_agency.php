@@ -54,7 +54,7 @@
                                         <label>Nama Lengkap</label>
                                     </div>
                                     <div class="form-floating mb-3">
-                                        <input type="text" name="no_ktp" class="number form form-control form-1">
+                                        <input type="text" name="no_ktp" class="number form form-control form-1" maxlength="16">
                                         <label>No KTP</label>
                                     </div>
                                     <div class="form-floating mb-3">
@@ -62,11 +62,11 @@
                                         <label>Email</label>
                                     </div>
                                     <div class="form-floating mb-3">
-                                        <input type="text" name="no_wa" class="number form form-control form-1">
+                                        <input type="text" name="no_wa" class="number form form-control form-1" maxlength="13">
                                         <label>No Whatsapp</label>
                                     </div>
                                     <div class="form-floating mb-3">
-                                        <input type="text" name="no_hp" class="number form form-control form-1">
+                                        <input type="text" name="no_hp" class="number form form-control form-1" maxlength="13">
                                         <label>No Handphone</label>
                                     </div>
                                     <div class="form-floating mb-3">
@@ -185,7 +185,7 @@
                                         <label>Nama Pemilik Rekening</label>
                                     </div>
                                     <div class="form-floating mb-3">
-                                        <input type="text" name="npwp" class="form form-control form-3 number">
+                                        <input type="text" name="npwp" class="form form-control form-3 number" maxlength="15">
                                         <label>NPWP</label>
                                     </div>
                                     <div class="d-flex justify-content-between">
@@ -405,7 +405,9 @@
     $(".form").keyup(function(){
         // console.log($(this).val())
         id = $(this).attr("name");
-        $("."+id).html($(this).val())
+
+        if(id == 'npwp') $("."+id).html(npwp($(this).val()))
+        else $("."+id).html($(this).val())
     })
 
     function scroll(){

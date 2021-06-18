@@ -102,12 +102,12 @@ class Desainakad extends CI_Controller {
             $data['title'] = "Desain Akad Marketing Agency (Form)";
             $data['string'] = read_file('./application/views/pages/akad/marketing_agency_form.php');
             $data['file'] = "marketing_agency_form";
-            $data['dropdown'] = "AkadAgencyForm";
+            $data['dropdown'] = "AkadMarketingAgencyForm";
         } else {
             $data['title'] = "Desain Akad Marketing Agency";
             $data['string'] = read_file('./application/views/pages/akad/marketing_agency.php');
             $data['file'] = "marketing_agency";
-            $data['dropdown'] = "AkadAgency";
+            $data['dropdown'] = "AkadMarketingAgency";
         }
 
         $this->load->view("pages/desain_akad", $data);

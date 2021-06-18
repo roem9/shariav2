@@ -56,6 +56,11 @@
             <td> <?= $no_ktp?></td>
         </tr>
         <tr>
+            <td style="width: 125px">No. NPWP</td>
+            <td style="width: 10px">:</td>
+            <td> <?= npwp($npwp)?></td>
+        </tr>
+        <tr>
             <td style="width: 125px" valign="top">Alamat</td>
             <td style="width: 10px" valign="top">:</td>
             <td><?= $alamat?></td>

@@ -73,7 +73,7 @@ class Agency_model extends MY_Model {
     }
 
     function loadAgency($id_batch = ""){
-        $this->datatables->select("nama_agency, a.status, id_agency,
+        $this->datatables->select("nama_agency, a.status, id_agency, nama_pemilik,
         (select count(id_marketing) from marketing_agency where a.id_agency = id_agency) as marketing,
         (select count(id_marketing) from marketing_agency where a.id_agency = id_agency AND status = 'aktif') as marketing_aktif,
         (select count(id_marketing) from marketing_agency where a.id_agency = id_agency AND status <> 'aktif') as marketing_nonaktif,
